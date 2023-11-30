@@ -6,6 +6,7 @@ import Scrolltotop from "./components/UI/ScrollToTop";
 import {
 
   ContestDetail,
+  ContestantDetail,
   Landing,
 } from "./Pages";
 
@@ -47,6 +48,7 @@ const App = () => {
           <Route exact path="/" element={<Landing />} />
          
           <Route exact path="/event" element={<ContestDetail />} />
+          <Route exact path="/contestant" element={<ContestantDetail />} />
 
           {/**Protected routes */}
         </Routes>

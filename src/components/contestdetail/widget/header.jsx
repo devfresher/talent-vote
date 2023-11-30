@@ -1,6 +1,7 @@
 import React from "react";
 import SlideInAnimation from "../../UI/slideInAnimation";
 import header from "../../../assets/png/header.png";
+import ellipse from "../../../assets/svg/ellipse.svg"
 import star from "../../../assets/png/star2.png";
 import { IoLogoTwitter, IoIosMail } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
@@ -54,7 +55,7 @@ export function Header() {
 
           <h2 className="font-medium text-base text-[#3DDEED] tracking-wide sm:text-2xl">₦100 per vote</h2>
 
-          <div>
+          <div className="flex flex-col gap-2 items-start">
             <p>Share Contest</p>
             <div>
               <div className="flex items-center gap-2">
@@ -79,8 +80,13 @@ export function Header() {
         </div>
       }
       firstChild={
-        <div className=" w-full h-[300px] rounded-lg   sm:h-[400px]">
+        <div className="relative w-full h-[300px] rounded-lg   sm:h-[400px]">
           <img alt="hero" src={header} className="w-full h-full object-cover" />
+
+          <div className="absolute top-0 w-[105%] h-[105%]">
+            <img src={ellipse} alt="ellipse" className="w-full h-full"/>
+
+          </div>
         </div>
       }
     />

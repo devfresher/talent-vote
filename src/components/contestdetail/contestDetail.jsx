@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TopBar from "../topbar/topBar";
-import { Header } from "./widget";
-import { EventNominees } from "./widget/eventNominees";
-import { AboutEvent } from "./widget/aboutEvent";
+import { Header, EventNominees, AboutEvent } from "./widget";
+import Footer from "components/footer/footer";
 
 export default function ContestDetail() {
   const [active, setActive] = useState(1);
@@ -54,6 +53,7 @@ export default function ContestDetail() {
         )}
         {active === 2 && <AboutEvent />}
       </div>
+      <Footer/>
     </>
   );
 }
