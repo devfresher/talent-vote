@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import hero from "../../assets/png/hero.png";
 import { Link } from "react-router-dom";
 import SlideInAnimation from "components/UI/slideInAnimation";
-export default function Hero() {
+export default function Hero({ id }) {
   const images = [hero, hero, hero];
   const settings = {
     dots: true,
@@ -27,14 +27,17 @@ export default function Hero() {
     //nextArrow: false,
   };
 
-  const parentStyle = "w-full px-2 py-5 sm:py-8 sm:px-10 my-3 sm:my-6 lg:my-8 md:px-20 gap-4 md:gap-8 flex  flex-col lg:flex-row items-center justify-center"
+  const parentStyle =
+    "w-full px-2 py-5 sm:py-8 sm:px-10 my-3 sm:my-6 lg:my-8 md:px-20 gap-4 md:gap-8 flex  flex-col lg:flex-row items-center justify-center";
   return (
     <>
       <SlideInAnimation
-      className={parentStyle}
+        className={parentStyle}
         firstChild={
           <div className="flex flex-col w-[90%] justify-start items-start gap-6">
-            <h3 className="uppercase text-base text-gray-200">Virtual Contest</h3>
+            <h3 className="uppercase text-base text-gray-200">
+              Virtual Contest
+            </h3>
 
             <h1 className="text-3xl md:text-5xl lg:text-3xl leading-6 sm:leading-10 min-[1100px]:text-5xl font-semibold">
               Impacting the Lives of Young People in Africa
@@ -49,9 +52,12 @@ export default function Hero() {
             </div>
 
             <div className="flex items-center gap-4">
-              <button className="text-zinc-800 font-normal bg-[#3DDEED] rounded-sm px-4 py-3">
+              <Link
+                to={`/category/${id}`}
+                className="text-zinc-800 font-normal bg-[#3DDEED] rounded-sm px-4 py-3"
+              >
                 Start Voting
-              </button>
+              </Link>
               <button className="flex items-center gap-2 justify-center border border-gray-50 rounded-sm px-4 sm:py-3 hover:bg-gray-200 hover:bg-opacity-10 py-2">
                 <MdOutlineExplore className="text-xl" />
                 <span>Explore</span>
@@ -66,7 +72,7 @@ export default function Hero() {
                   className="border border-zinc-600 rounded-md p-2 hover:bg-gray-200 hover:bg-opacity-10"
                 >
                   <IoLogoTwitter className="text-xl" />
-                </Link> 
+                </Link>
                 <Link
                   to="www.twitter.com"
                   className="border border-zinc-600 rounded-md p-2 hover:bg-gray-200 hover:bg-opacity-10"

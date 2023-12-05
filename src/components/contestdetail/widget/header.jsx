@@ -3,11 +3,11 @@ import SlideInAnimation from "../../UI/slideInAnimation";
 import header from "../../../assets/png/header.png";
 import ellipse from "../../../assets/svg/ellipse.svg"
 import star from "../../../assets/png/star2.png";
-import { IoLogoTwitter, IoIosMail } from "react-icons/io";
-import { RiInstagramFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { FaFacebook, FaDiscord } from "react-icons/fa";
-export function Header() {
+//import { IoLogoTwitter, IoIosMail } from "react-icons/io";
+//import { RiInstagramFill } from "react-icons/ri";
+//import { Link } from "react-router-dom";
+//import { FaFacebook, FaDiscord } from "react-icons/fa";
+export function Header({categoryData}) {
   const parentStyle =
     "bg-detail w-full px-2 py-5 sm:py-8 sm:px-10 md:px-20 gap-4 md:gap-8 flex my-3 sm:my-6 lg:my-8  flex-col lg:flex-row items-center justify-center";
   return (
@@ -16,67 +16,23 @@ export function Header() {
       secondChild={
         <div className="flex flex-col w-full justify-start items-start gap-8">
           <h1 className="text-3xl md:text-5xl lg:text-3xl leading-6 sm:leading-10 min-[1100px]:text-5xl font-semibold">
-          Africa Matz Award 2023
+          {categoryData?.name ?? ""}
           </h1>
           <div className="flex gap-2 w-full items-start justify-start">
             <div
             className="flex flex-col gap-1"
             >
-              <p>{`Starts: Saturday September 02, 2023 (00:00)`}</p>
-              <p>{`Ends: Thursday November 30, 2023 (23:59)`}</p>
+              <p>{`Talent: ${categoryData?.talent?.name ?? ""} ( ${categoryData?.country?.name ?? ""})`}</p>
+          
             </div>
             <img src={star} alt="star" />
           </div>
-          <div className="flex items-start gap-1">
-            <div className="flex items-center flex-col gap-2 justify-center">
-            <div className="flex gap-[1px]">
-              <TimingWidget num={1} />
-              <TimingWidget num={1} />
+          <div className="flex flex-wrap text-justify leading-6">
+              {categoryData?.description ?? ""}
             </div>
-                <p className="font-semibold">DAYS</p>
-            </div>
-            <span className="font-semibold text-4xl">:</span>
-            <div className="flex items-center flex-col gap-2 justify-center">
-            <div className="flex gap-[1px]">
-              <TimingWidget num={1} />
-              <TimingWidget num={1} />
-            </div>
-                <p className="font-semibold">HOURS</p>
-            </div>
-            <span className="font-semibold text-4xl">:</span>
-            <div className="flex items-center flex-col gap-2 justify-center">
-            <div className="flex gap-[1px]">
-              <TimingWidget num={1} />
-              <TimingWidget num={1} />
-            </div>
-                <p className="font-semibold">MINS</p>
-            </div>
-          </div>
 
           <h2 className="font-medium text-base text-[#3DDEED] tracking-wide sm:text-2xl">₦100 per vote</h2>
 
-          <div className="flex flex-col gap-2 items-start">
-            <p>Share Contest</p>
-            <div>
-              <div className="flex items-center gap-2">
-                <Link to="www.twitter.com " className="">
-                  <IoLogoTwitter className="text-lg" />
-                </Link>
-                <Link to="www.twitter.com" className="">
-                  <RiInstagramFill className="text-lg" />
-                </Link>
-                <Link to="www.twitter.com" className="">
-                  <FaDiscord className="text-lg" />
-                </Link>
-                <Link to="www.twitter.com" className="">
-                  <FaFacebook className="text-lg" />
-                </Link>
-                <Link to="www.twitter.com" className="">
-                  <IoIosMail className="text-lg" />
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       }
       firstChild={
@@ -106,3 +62,56 @@ function TimingWidget({ num }) {
     </div>
   );
 }
+
+
+{/**
+ <div className="flex items-start gap-1">
+            <div className="flex items-center flex-col gap-2 justify-center">
+            <div className="flex gap-[1px]">
+              <TimingWidget num={1} />
+              <TimingWidget num={1} />
+            </div>
+                <p className="font-semibold">DAYS</p>
+            </div>
+            <span className="font-semibold text-4xl">:</span>
+            <div className="flex items-center flex-col gap-2 justify-center">
+            <div className="flex gap-[1px]">
+              <TimingWidget num={1} />
+              <TimingWidget num={1} />
+            </div>
+                <p className="font-semibold">HOURS</p>
+            </div>
+            <span className="font-semibold text-4xl">:</span>
+            <div className="flex items-center flex-col gap-2 justify-center">
+            <div className="flex gap-[1px]">
+              <TimingWidget num={1} />
+              <TimingWidget num={1} />
+            </div>
+                <p className="font-semibold">MINS</p>
+            </div>
+          </div>
+
+          
+          <div className="flex flex-col gap-2 items-start">
+            <p>Share Contest</p>
+            <div>
+              <div className="flex items-center gap-2">
+                <Link to="www.twitter.com " className="">
+                  <IoLogoTwitter className="text-lg" />
+                </Link>
+                <Link to="www.twitter.com" className="">
+                  <RiInstagramFill className="text-lg" />
+                </Link>
+                <Link to="www.twitter.com" className="">
+                  <FaDiscord className="text-lg" />
+                </Link>
+                <Link to="www.twitter.com" className="">
+                  <FaFacebook className="text-lg" />
+                </Link>
+                <Link to="www.twitter.com" className="">
+                  <IoIosMail className="text-lg" />
+                </Link>
+              </div>
+            </div>
+          </div>
+*/}

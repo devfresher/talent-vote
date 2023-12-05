@@ -1,19 +1,49 @@
 import { Input } from "components/composables/input";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
-
-export function VoteContestant({ close }) {
+import { voting } from "Utils/api";
+import { LoaderIcon } from "lucide-react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+export function VoteContestant({ close, name, id, catId }) {
+  const [loading, setloading] = useState(false);
+  const { authtoken } = useSelector((state) => state.user);
   const [voteData, setVoteData] = useState({
-    noOfVotes: "",
+    numberOfVotes: "",
     email: "",
     fullName: "",
-    phone: "",
+    phoneNumber: "",
   });
 
   function handleChange(id, value) {
     setVoteData({ ...voteData, [id]: value });
   }
 
+  async function voteParticipant() {
+    if (!authtoken) {
+      toast.error("Register/Login to vote a participant")
+      return
+    }
+    
+    for (let i in voteData) {
+      if (voteData[i] === "") {
+        toast.error(`${i} is required`);
+        return;
+      }
+    }
+    setloading(true);
+    await voting(authtoken, catId, id, voteData)
+      .then((res) => {
+        ////console.log(res);
+        setloading(false);
+        window.location.href = res.data;
+        //toast.success("Voting Successfull");
+      })
+      .catch((err) => {
+        ////console.log(err);
+        setloading(false);
+      });
+  }
   return (
     <div
       onClick={close}
@@ -26,7 +56,7 @@ export function VoteContestant({ close }) {
         className="absolute w-[95%] sm:w-[500px] bg-[#0F041C] border overflow-hidden border-gray-200 rounded-t-lg inset-0 m-auto h-fit"
       >
         <div className="bg-white p-3 text-[#170F49] font-normal w-full flex justify-between items-center">
-          <p>{`Vote Emmanuel Alayande for African Britz Award `}</p>
+          <p>{`Vote for ${name}  `}</p>
           <button onClick={close}>
             <MdClose className="text-[#170F49] text-xl text-" />
           </button>
@@ -40,9 +70,9 @@ export function VoteContestant({ close }) {
           <Input
             type={"number"}
             placeholder={"Yout total number of votes"}
-            value={voteData.noOfVotes}
+            value={voteData.numberOfVotes}
             setValue={handleChange}
-            id="noOfVotes"
+            id="numberOfVotes"
             label={"Total number of votes"}
           />
           <Input
@@ -64,10 +94,10 @@ export function VoteContestant({ close }) {
           <Input
             type={"number"}
             placeholder={"081 2321 2212"}
-            value={voteData.phone}
+            value={voteData.phoneNumber}
             setValue={handleChange}
-            id="phone"
-            label={"Phone Number"}
+            id="phoneNumber"
+            label={"phone Number"}
           />
         </div>
 
@@ -76,8 +106,14 @@ export function VoteContestant({ close }) {
         </div>
 
         <div className="py-4 flex w-full items-center justify-center">
-          <button className="px-8 py-3 rounded-md bg-[#3DDEED] font-normal text-zinc-700 ">
-            Proceed to Payment
+          <button
+          onClick={voteParticipant}
+          className="w-[200px] h-10 rounded-md bg-[#3DDEED] font-normal text-zinc-700 ">
+            {loading ? (
+              <LoaderIcon className="text-xl animate-spin" />
+            ) : (
+              " Proceed to Payment"
+            )}
           </button>
         </div>
       </div>
