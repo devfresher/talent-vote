@@ -7,37 +7,53 @@ import KnowHow from "../landingUis/knowHow";
 import GetInTouch from "../landingUis/getInTouch";
 import Faq from "../landingUis/faq";
 import Footer from "../footer/footer";
-import { singleCategory } from "Utils/api";
-import { useParams, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "Redux/Actions/ActionCreators";
+import { ongoingEvent } from "Utils/api";
+
+import toast from "react-hot-toast";
 
 const Landing = () => {
-  const { id } = useParams();
-  const { search } = useLocation();
-  const [singleCategoryData, setSingleCategoryData] = useState(null);
-  const dispatch = useDispatch();
+
+  const [event, setEvent] = useState(null)
+  const [loading, setloading] = useState(false)
 
   useEffect(() => {
-    async function getSingleCategory() {
-      await singleCategory(id.replace("catId=", ""))
-        .then((res) => {
-          const { data } = res?.data;
-          setSingleCategoryData(data?.event);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    async function loadevents() {
+      setloading(true);
+     await ongoingEvent()
+      .then((res) => {
+        ////console.log(res);
+        setloading(false)
+        const { data } = res.data;
+        setEvent(data);
+      })
+      .catch((err) => {
+         ////console.log(err);
+         const { error } = err.response.data;
+         if (error) {
+           toast.error(error.message);
+         }
+         const { message } = err.response.data.error;
+         if (message) {
+           toast.error(message);
+         }
+         const { message: mm } = err.response.data;
+         if (mm) {
+           toast.error(mm);
+         }
+         setloading(false);
+      });
     }
-    getSingleCategory();
-    dispatch(loginSuccess(search.replace("?token=", "")));
-  }, [id]);
+    loadevents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
 
   return (
     <div className="w-full h-full ">
-      <TopBar id={id.replace("catId=", "")} />
-      <Hero id={id.replace("catId=", "")} />
-      <OngoingEvent event={singleCategoryData} />
+      <TopBar id={event?._id} loading={loading}/>
+      <Hero id={event?._id} loading={loading}/>
+      <OngoingEvent event={event} />
       <AboutUs />
       <KnowHow />
       <Faq />

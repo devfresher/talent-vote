@@ -1,63 +1,66 @@
-export const dateOfMonth = (dateString) => {
-    const date =  new Date(dateString)
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      
-      
-      const month = months[date.getUTCMonth()];
-      const year = date.getUTCFullYear();
-      const day = date.getUTCDate();
-      
-      return `${month}, ${day} ${year}`;
+export const formatDate = (date) => {
+  const inputDate = new Date(date);
+
+  // Format the date
+  const formattedDate = inputDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  // Format the time
+  const formattedTime = inputDate.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  // Combine date and time
+  const result = `${formattedDate} (${formattedTime})`;
+
+  return result;
+};
+
+export const formatTime = (targetDate) => {
+   // Parse the target date string into a Date object
+   const targetDateTime = new Date(targetDate);
+
+   // Get the current date and time
+   const currentDateTime = new Date();
+ 
+   // Calculate the time difference in milliseconds
+   const timeDifference = targetDateTime - currentDateTime;
+ 
+   // Calculate days, hours, and minutes
+   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+   const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+ 
+
+
+  // Format the result
+  return {
+    day: [...days.toString().padStart(3, "0")],
+    hours: [...hours.toString().padStart(2, "0")],
+    min: [...minutes.toString().padStart(2, "0")],
+  };
+};
+
+export function currentDateString() {
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getFullYear()}-${
+    String(currentDate.getMonth() + 1).padStart(2, '0')
+  }-${
+    String(currentDate.getDate()).padStart(2, '0')
+  }T${
+    String(currentDate.getHours()).padStart(2, '0')
+  }:${
+    String(currentDate.getMinutes()).padStart(2, '0')
+  }:${
+    String(currentDate.getSeconds()).padStart(2, '0')
+  }.${
+    String(currentDate.getMilliseconds()).padStart(3, '0')
+  }Z`;
+
+  return formattedDate
 }
-
-export const daily = (dateString) => {
-    const date =  new Date(dateString)
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-      
-      const dayOfWeek = daysOfWeek[date.getUTCDay()];
-      const month = months[date.getUTCMonth()];
-      const year = date.getUTCFullYear();
-      const day = date.getUTCDate();
-
-      return `${dayOfWeek}, ${month} ${day} ${year}`;
-}
-
-export const dailyHours = (utcTimestamp) => {
-const date = new Date(utcTimestamp);
-
-
-const hours = date.getUTCHours().toString().padStart(2, "0");
-const minutes = date.getUTCMinutes().toString().padStart(2, "0");
-const seconds = date.getUTCSeconds().toString().padStart(2, "0");
-
-const hourformat = (hours % 12) || 12
-const period = hours >= 12 ? 'PM':'AM'
-
-return `${hourformat}:${minutes}:${seconds} ${period}`;
-
-}
-
-
-export function formatDate(inputDate) {
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const months = [
-    'Jan', 'Feb', 'March', 'April', 'May', 'June',
-    'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
-  ];
-
-  const date = new Date(inputDate);
-  const dayOfWeek = daysOfWeek[date.getUTCDay()];
-  const month = months[date.getUTCMonth()];
-  const year = date.getUTCFullYear();
-
-  const time = {dayOfWeek,month,year}
-  return time;
-}
-

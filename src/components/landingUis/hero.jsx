@@ -11,9 +11,10 @@ import event2 from "../../assets/svg/2ndevent.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import hero from "../../assets/png/hero.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SlideInAnimation from "components/UI/slideInAnimation";
-export default function Hero({ id }) {
+export default function Hero() {
+  const navigate = useNavigate()
   const images = [hero, hero, hero];
   const settings = {
     dots: true,
@@ -52,12 +53,15 @@ export default function Hero({ id }) {
             </div>
 
             <div className="flex items-center gap-4">
-              <Link
-                to={`/category/${id}`}
+              <button
+               onClick={() => {
+                navigate(`/event`)
+               }}
+            
                 className="text-zinc-800 font-normal bg-[#3DDEED] rounded-sm px-4 py-3"
               >
                 Start Voting
-              </Link>
+              </button>
               <button className="flex items-center gap-2 justify-center border border-gray-50 rounded-sm px-4 sm:py-3 hover:bg-gray-200 hover:bg-opacity-10 py-2">
                 <MdOutlineExplore className="text-xl" />
                 <span>Explore</span>

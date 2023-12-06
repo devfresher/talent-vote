@@ -4,6 +4,12 @@ export function EventNominees({ title, data, catId }) {
   return (
     <div className="flex w-full flex-col my-4 sm:my-8 items-center justify-center gap-4 sm:gap-6">
       <h2 className="font-semibold text-base sm:text-xl">{title}</h2>
+      {data && data?.length === 0 && <div
+      className="w-full h-[200px] flex items-center justify-center"
+      >
+        
+        <p >- No Participant -</p>
+         </div>}
       <div className="grid w-full nine xl:grid-cols-4  gap-4">
         {Array.isArray(data) && data.map(({ participant, registeredData }, idx) => {
       

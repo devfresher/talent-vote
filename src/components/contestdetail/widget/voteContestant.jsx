@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 export function VoteContestant({ close, name, id, catId }) {
   const [loading, setloading] = useState(false);
-  const { authtoken } = useSelector((state) => state.user);
+  
   const [voteData, setVoteData] = useState({
     numberOfVotes: "",
     email: "",
@@ -20,11 +20,7 @@ export function VoteContestant({ close, name, id, catId }) {
   }
 
   async function voteParticipant() {
-    if (!authtoken) {
-      toast.error("Register/Login to vote a participant")
-      return
-    }
-    
+   
     for (let i in voteData) {
       if (voteData[i] === "") {
         toast.error(`${i} is required`);
@@ -32,7 +28,7 @@ export function VoteContestant({ close, name, id, catId }) {
       }
     }
     setloading(true);
-    await voting(authtoken, catId, id, voteData)
+    await voting( catId, id, voteData)
       .then((res) => {
         ////console.log(res);
         setloading(false);
@@ -108,7 +104,7 @@ export function VoteContestant({ close, name, id, catId }) {
         <div className="py-4 flex w-full items-center justify-center">
           <button
           onClick={voteParticipant}
-          className="w-[200px] h-10 rounded-md bg-[#3DDEED] font-normal text-zinc-700 ">
+          className="w-[200px] h-10  flex items-center justify-center rounded-md bg-[#3DDEED] font-normal text-zinc-700 ">
             {loading ? (
               <LoaderIcon className="text-xl animate-spin" />
             ) : (

@@ -3,8 +3,10 @@ import hero from "../../assets/png/hero.png";
 
 import SlideInAnimation from "components/UI/slideInAnimation";
 import { MAIN_SITE_LINK } from "constants/constant";
+import { useNavigate } from "react-router-dom";
 
 export default function OngoingEvent({ event }) {
+  const navigate = useNavigate()
   const parentStyle =
     "w-full px-2 py-5 sm:py-8 sm:px-10 md:px-20 gap-4 my-3 sm:my-6 lg:my-8 md:gap-8 flex  flex-col lg:flex-row items-center justify-center bg-gray-200 bg-opacity-10";
   return (
@@ -22,7 +24,7 @@ export default function OngoingEvent({ event }) {
 
             <button
               onClick={() => {
-                window.open(`${MAIN_SITE_LINK}/event`, "_blank");
+               navigate(`/event`)
               }}
               className="text-zinc-800 bg-[#3DDEED] font-normal rounded-sm px-4 py-3"
             >

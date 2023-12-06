@@ -38,9 +38,9 @@ const App = () => {
           {/*    AUTH PAGE */}
 
           {/*    LANDING PAGE  */}
-          <Route exact path="/:id" element={<Landing />} />
+          <Route exact path="/" element={<Landing />} />
 
-          <Route exact path="/category/:id" element={<ContestDetail />} />
+          <Route exact path="/event" element={<ContestDetail />} />
           <Route exact path="/contestant/:id" element={<ContestantDetail />} />
 
           {/**Protected routes */}
