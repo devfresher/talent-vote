@@ -1,5 +1,5 @@
 import React from "react";
-
+import star from "../../assets/png/star.png";
 import rect from "../../assets/png/rect.png";
 import SlideInAnimation from "components/UI/slideInAnimation";
 export default function KnowHow() {
@@ -12,34 +12,56 @@ export default function KnowHow() {
         firstChild={
           <div className="flex flex-col w-[90%] justify-start items-start gap-4">
             <h2 className="font-semibold text-lg sm:text-2xl">
-              How our contest is being
+              How Vote is Done
             </h2>
-            <div className="flex flex-wrap text-justify leading-6">
-              Lorem ipsum dolor sit amet consectetur. Odio nunc tellus sed
-              condimentum nunc egestas quisque magna lacinia. Tellus nec
-              sagittis augue lorem tincidunt vestibulum. Scelerisque venenatis
-              dolor auctor scelerisque. Lorem ipsum dolor sit amet consectetur.
-              Odio nunc tellus sed condimentum nunc egestas quisque magna
-              lacinia. Tellus nec sagittis augue lorem tincidunt vestibulum.
-              Scelerisque venenatis dolor auctor scelerisque. Lorem ipsum dolor
-              sit amet consectetur. Odio nunc tellus sed condimentum nunc
-              egestas quisque magna lacinia. Tellus nec sagittis augue lorem
-              tincidunt vestibulum. Scelerisque venenatis dolor auctor
-              scelerisque.
-            </div>
+            <ListWidget
+              text={
+                <span>
+                  Create an account{" "}
+                  <a className="hover:underline" href="https://www.talent-revised.vercel.app">
+                    www.talent-revised.vercel.app
+                  </a>
+                </span>
+              }
+            />
+            <ListWidget text={"Verify your account"} />
+
+            <ListWidget
+              text={
+                <span>
+                  Go to voting site{" "}
+                  <a className="hover:underline" href="https://www.talent-vote.vercel.app">
+                    www.talent-vote.vercel.app
+                  </a>
+                </span>
+              }
+            />
           </div>
         }
         className={parentStyle}
         secondChild={
           <div className=" w-full h-[300px] rounded-lg   sm:h-[450px]">
-            <img
-              alt="hero"
-              src={rect}
-              className="w-full h-full object-cover"
-            />
+            <img alt="hero" src={rect} className="w-full h-full object-cover" />
           </div>
         }
       />
     </>
   );
+}
+
+function ListWidget({ text }) {
+  return (
+    <div className="flex items-start justify-start w-full gap-2">
+      <img src={star} alt="" />
+      <p>{text}</p>
+    </div>
+  );
+}
+
+{
+  /**
+<div className="flex flex-wrap text-justify leading-6">
+            
+            </div>
+*/
 }

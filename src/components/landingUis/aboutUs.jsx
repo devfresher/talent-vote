@@ -1,6 +1,5 @@
 import React from "react";
-import star from "../../assets/png/star.png";
-import about from "../../assets/png/about.png"
+import about from "../../assets/png/about.png";
 import SlideInAnimation from "components/UI/slideInAnimation";
 export default function AboutUs() {
   const parentStyle =
@@ -12,49 +11,34 @@ export default function AboutUs() {
         secondChild={
           <div className="flex flex-col w-[90%] justify-start items-start gap-4">
             <h2 className="font-semibold text-base sm:text-xl">Who we are</h2>
-            <div className="flex flex-wrap text-justify leading-6 w-[80%]">
-              Lorem ipsum dolor sit amet consectetur. Odio nunc tellus sed
-              condimentum nunc egestas quisque magna lacinia.
+            <div className="flex flex-wrap text-justify leading-6 w-full">
+              The stagetime project is a transforming projected birthed by the
+              Stagetime team in order to make fulfilling youths for a fulfilling
+              future.
             </div>
-
-            <div className="grid grid-cols-2 gap-2 items-start h-fit w-full">
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
-              <ListWidget
-                text={
-                  "High-resolution OLED or LCD screens: Provide sharp and clear visuals."
-                }
-              />
+            <div  className="flex flex-wrap text-justify leading-6 w-full">
+              We are a team of individual whose aim and objective is to make
+              sure the African youth does not only showcase their inborn talent
+              but also have the platform to showcase their acquired knowledge
+              and skills.
+            </div>
+            <div  className="flex flex-wrap text-justify leading-6 w-full">
+              We are people whose priorities are not limited to the
+              entertainment cohort but also creating a strategic platform which
+              makes sure that Being part of this community means that you are
+              constantly exposed to local and global opportunities capable of
+              transforming your life and that of your immediate community.
             </div>
           </div>
         }
         className={parentStyle}
         firstChild={
           <div className=" w-full h-[300px] rounded-lg   sm:h-[400px]">
-            <img alt="hero" src={about} className="w-full h-full object-cover" />
+            <img
+              alt="hero"
+              src={about}
+              className="w-full h-full object-cover"
+            />
           </div>
         }
       />
@@ -62,11 +46,3 @@ export default function AboutUs() {
   );
 }
 
-function ListWidget({ text }) {
-  return (
-    <div className="flex items-start justify-start w-full gap-2">
-      <img src={star} alt="" />
-      <p>{text}</p>
-    </div>
-  );
-}
