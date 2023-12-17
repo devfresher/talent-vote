@@ -12,7 +12,7 @@ export default function KnowHow() {
         firstChild={
           <div className="flex flex-col w-[90%] justify-start items-start gap-4">
             <h2 className="font-semibold text-lg sm:text-2xl">
-              How Vote is Done
+              How Voting is Conducted
             </h2>
             <ListWidget
               text={
@@ -40,6 +40,41 @@ export default function KnowHow() {
         }
         className={parentStyle}
         secondChild={
+          <div className=" w-full h-[300px] rounded-lg   sm:h-[450px]">
+            <img alt="hero" src={rect} className="w-full h-full object-cover" />
+          </div>
+        }
+      />
+
+      <SlideInAnimation
+        secondChild={
+          <div className="flex flex-col w-[90%] justify-start items-start gap-4">
+            <h2 className="font-semibold text-lg sm:text-2xl">
+              Become a Contestant
+            </h2>
+
+            <p>
+              Becoming a contestant is simple and easy. The steps are:
+            </p>
+            <ListWidget
+              text={
+                <span>
+                  Register as a contestant {" "} 
+                  <a className="hover:underline" href="https://www.talent-revised.vercel.app">
+                    here
+                  </a>
+                </span>
+              }
+            />
+            <ListWidget text={"Register by providing valid details"} />
+            <ListWidget text={"Upload a video telling us about you and what you can do"} />
+            <ListWidget text={"Signify if registering as and individual or as a team"} />
+            <ListWidget text={"Proceed to payment"} />
+            <ListWidget text={"Then you’re now good to go, You can then share your profile links to everyone!"} />
+          </div>
+        }
+        className={parentStyle}
+        firstChild={
           <div className=" w-full h-[300px] rounded-lg   sm:h-[450px]">
             <img alt="hero" src={rect} className="w-full h-full object-cover" />
           </div>
