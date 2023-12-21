@@ -17,7 +17,7 @@ export default function TopBar() {
       <nav className="hidden md:flex items-center gap-4 md:gap-6">
         <Link to={`/`}>Home</Link>
         <Link to={`/`}>Live Result</Link>
-        <Link to={`/`}>Contact us</Link>
+        <Link to={`/about`}>About</Link>
       </nav>
       {!pathname.includes("category") ? (
         <button

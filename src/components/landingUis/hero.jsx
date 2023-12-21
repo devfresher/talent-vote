@@ -62,7 +62,11 @@ export default function Hero() {
               >
                 Start Voting
               </button>
-              <button className="flex items-center gap-2 justify-center border border-gray-50 rounded-sm px-4 sm:py-3 hover:bg-gray-200 hover:bg-opacity-10 py-2">
+              <button 
+              onClick={() => {
+                navigate(`/event`)
+               }}
+              className="flex items-center gap-2 justify-center border border-gray-50 rounded-sm px-4 sm:py-3 hover:bg-gray-200 hover:bg-opacity-10 py-2">
                 <MdOutlineExplore className="text-xl" />
                 <span>Explore</span>
               </button>

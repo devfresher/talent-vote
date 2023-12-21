@@ -93,10 +93,4 @@ function ListWidget({ text }) {
   );
 }
 
-{
-  /**
-<div className="flex flex-wrap text-justify leading-6">
-            
-            </div>
-*/
-}
+

@@ -3,7 +3,7 @@ import "./index.css";
 import { Toaster } from "react-hot-toast";
 import Scrolltotop from "./components/UI/ScrollToTop";
 
-import { ContestDetail, ContestantDetail, Landing } from "./Pages";
+import { About, ContestDetail, ContestantDetail, Landing } from "./Pages";
 
 const App = () => {
   return (
@@ -41,6 +41,7 @@ const App = () => {
           <Route exact path="/" element={<Landing />} />
 
           <Route exact path="/event" element={<ContestDetail />} />
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/contestant/:id" element={<ContestantDetail />} />
 
           {/**Protected routes */}
