@@ -4,10 +4,12 @@ import { Toaster } from "react-hot-toast";
 import Scrolltotop from "./components/UI/ScrollToTop";
 
 import { About, ContestDetail, ContestantDetail, Landing } from "./Pages";
+import NotPaid from "components/notPaid/notPaid";
 
 const App = () => {
   return (
     <div className="w-full h-full font-extralight text-sm sm:text-[15px] poppins text-gray-100">
+      <NotPaid />
       <div>
         <Toaster
           toastOptions={{
